@@ -1,4 +1,4 @@
-#!/usr/local/bin/python3
+#!/usr/bin/python3
 
 from include import *
 
@@ -11,6 +11,7 @@ def check_performance_show_note(moy, notes, min, max):
 	while (note > 0 and notes[i] < moy):
 		i += 1
 		note -= 1
+	colored_text("max tolerated value : " + str(notes[i]), "cyan")
 	if (moy > notes[len(notes) - 1]):
 		colored_text("note : [KO]", "red")
 	elif (note == len(notes) and len(notes) == 1):
@@ -68,7 +69,6 @@ def check_performance_sorted(max_lenght, repeat=30, notes=None):
 	moy = int(sum / repeat)
 	colored_text("Final result   : " + str(moy), "green")
 	colored_text("Maximum result : " + str(max_val), "green")
-	colored_text("Minimum result : " + str(min_val), "green")
 	if (notes != None):
 		check_performance_show_note(moy, notes, max_val, min_val)
 	print("")
@@ -97,15 +97,14 @@ def check_performance_random(lenght, repeat=30, notes=None):
 	moy = int(sum / repeat)
 	colored_text("Final result   : " + str(moy), "green")
 	colored_text("Maximum result : " + str(max_val), "green")
-	colored_text("Minimum result : " + str(min_val), "green")
 	if (notes != None):
 		check_performance_show_note(moy, notes, max_val, min_val)
 	print("")
 	return (moy)
 
-check_performance_sorted(7, 1, [0])
+check_performance_sorted(7, 10, [0])
 
-check_performance_random(5, 10, [12])
+check_performance_random(5, 20, [12])
 
 check_performance_random(100, 30, [700, 900, 1100, 1300, 1500])
 check_performance_random(500, 20, [5500, 7000, 8500, 10000, 11500])

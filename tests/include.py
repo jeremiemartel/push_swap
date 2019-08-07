@@ -4,8 +4,8 @@ import os
 import sys
 import signal
 
-PUSHSWAP	= "../push_swap"
-CHECKER		= "../checker"
+PUSHSWAP	= "./push_swap"
+CHECKER		= "./checker"
 
 PUSHSWAP_REF	= "./push_swap"
 CHECKER_REF		= "./checker"
