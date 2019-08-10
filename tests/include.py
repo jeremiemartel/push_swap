@@ -2,7 +2,7 @@ import random
 import string
 import os
 import sys
-import signal
+from signal import signal, SIGINT
 
 PUSHSWAP	= "./push_swap"
 CHECKER		= "./checker"
@@ -123,7 +123,11 @@ def launch_cmd(programm, arg, file1, file2, input=True):
 	elif (input != True):
 		redirections += " < " + input + " "
 	cmd += redirections
-	os.system(cmd)
+	ret = os.system(cmd)
+	if (ret & 0xff):
+		print("Signal received")
+		exit (1)
+
 
 def valgrind_initial_configuration(file=VALGRIND_CONF_FILE):
 	colored_text("Valgrind Initialisation : started", "cyan")
@@ -157,6 +161,9 @@ def launch_cmd_valgrind(programm, arg, file1, file2, input=True):
 		path = os.path.join(VALGRIND_LOG_DIR, "log_" + str(test_counter.count))
 		colored_text("Valgrind error, find logs in " + path, "red")
 		os.system("mv " + BUFFER_FILE + " " + path)
+	if (ret & 0xff):
+		print("Signal received")
+		exit (1)
 
 if (VALGRIND_ENABLE):
 	launch_cmd = launch_cmd_valgrind
@@ -213,3 +220,9 @@ def check_checker_result(arg, file1, file2, verbose=False):
 			do_args_contain_errors(arg, verbose=True)
 			return (False)
 	return (True)
+
+def ctrl_c(signal_received, frame):
+	print("Exit")
+	exit(0)
+
+signal(SIGINT, ctrl_c)

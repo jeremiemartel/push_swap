@@ -5,13 +5,15 @@ from include import *
 def check_performance_show_note(moy, notes, min, max):
 	note = len(notes)
 	i = 0
-	if (max > notes[len(notes) - 1]):
-		colored_text("note : [KO]", "red")
-		return
 	while (note > 0 and notes[i] < moy):
 		i += 1
 		note -= 1
+	if (i >= len(notes)):
+		i = len(notes) - 1
 	colored_text("max tolerated value : " + str(notes[i]), "cyan")
+	if (max > notes[len(notes) - 1]):
+		colored_text("note : [KO]", "red")
+		return
 	if (moy > notes[len(notes) - 1]):
 		colored_text("note : [KO]", "red")
 	elif (note == len(notes) and len(notes) == 1):

@@ -6,10 +6,12 @@
 /checkerth
 /libft
 
+/tests/checker
+/tests/push_swap
 /tests/.my_supp.supp
 /tests/__pycache__/
-
-res*
+/tests/buffer
+/tests/res*
 
 # Prerequisites
 *.d

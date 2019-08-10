@@ -74,7 +74,6 @@ def check_random_input(charset,start_len=1, max_len=10, repetition=3):
 	return (True)
 
 
-
 def show_check_result(res, test_name):
 	if (res == True):
 		colored_text(test_name + " : [OK]\n", "green")
