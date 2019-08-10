@@ -6,7 +6,7 @@
 /*   By: jmartel <jmartel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/25 17:46:26 by jmartel           #+#    #+#             */
-/*   Updated: 2019/08/05 20:30:22 by jmartel          ###   ########.fr       */
+/*   Updated: 2019/08/10 13:24:59 by jmartel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ int			ck_parsing_check_duplication(t_push *push);
 /*
 ** ck_is_valid_op.c
 */
-ops			*ck_is_valid_op(char *line);
+t_op		*ck_is_valid_op(char *line);
 
 /*
 ** ck_do_op.c

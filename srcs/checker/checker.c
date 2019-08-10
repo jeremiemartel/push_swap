@@ -6,7 +6,7 @@
 /*   By: jmartel <jmartel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/25 17:40:52 by jmartel           #+#    #+#             */
-/*   Updated: 2019/08/05 20:30:10 by jmartel          ###   ########.fr       */
+/*   Updated: 2019/08/10 13:25:25 by jmartel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ static int	ck_read(t_push *push)
 {
 	char	*line;
 	int		ret;
-	ops		*op;
+	t_op	*op;
 
 	line = NULL;
 	ret = 1;
@@ -31,7 +31,7 @@ static int	ck_read(t_push *push)
 		if (push->verbose)
 			ft_printf("%s%s%s\n", CYAN, line, EOC);
 		free(line);
-		op(&push);
+		op->op(&push);
 		if (push->verbose)
 			t_push_put(push);
 		if (push->count)

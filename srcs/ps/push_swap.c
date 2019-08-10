@@ -6,7 +6,7 @@
 /*   By: jmartel <jmartel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/25 17:41:13 by jmartel           #+#    #+#             */
-/*   Updated: 2019/08/05 20:33:18 by jmartel          ###   ########.fr       */
+/*   Updated: 2019/08/10 13:26:51 by jmartel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,16 +14,14 @@
 
 void	ps_ops_put(t_push *push)
 {
-	t_pile	*head;
+	t_list	*head;
+	t_op	*op;
 
 	head = push->op;
 	while (head)
 	{
-		ft_putchar(head->nb % 0xff);
-		ft_putchar(head->nb / 0xff00);
-		if (head->nb / 0xff0000)
-			ft_putchar((head->nb / 0xff0000));
-		ft_putchar('\n');
+		op = (t_op*)(head->content);
+		ft_printf("%s\n", op->name);
 		head = head->next;
 	}
 }

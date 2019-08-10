@@ -6,7 +6,7 @@
 /*   By: jmartel <jmartel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/12 10:08:13 by jmartel           #+#    #+#             */
-/*   Updated: 2019/08/05 20:30:55 by jmartel          ###   ########.fr       */
+/*   Updated: 2019/08/10 13:15:57 by jmartel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ int			ps_sort_select(t_push *push);
 /*
 ** ps_tools.c
 */
-int			ps_do_op(t_push *push, ops f, int nb);
+int			ps_do_op(t_push *push, t_op_id id);
 int			ps_error(t_push *push, char *msg);
 void		*ps_errorn(t_push *push, char *msg);
 void		ps_usage(void);

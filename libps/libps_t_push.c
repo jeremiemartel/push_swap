@@ -6,7 +6,7 @@
 /*   By: jmartel <jmartel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/26 15:01:40 by jmartel           #+#    #+#             */
-/*   Updated: 2019/04/27 14:23:16 by jmartel          ###   ########.fr       */
+/*   Updated: 2019/08/10 13:17:48 by jmartel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,29 +34,10 @@ void	t_push_free(t_push **push)
 {
 	t_pile_free_list(&((*push)->a));
 	t_pile_free_list(&((*push)->b));
-	t_pile_free_list(&((*push)->op));
+	ft_lstdel(&((*push)->op), NULL);
 	free(*push);
 	push = NULL;
 	return ;
-}
-
-t_pile	*t_push_new_op_push(int nb, t_push *push)
-{
-	t_pile	*new;
-	t_pile	*head;
-
-	if (!(new = t_pile_new(nb, NULL)))
-		return (NULL);
-	head = push->op;
-	if (!head)
-	{
-		push->op = new;
-		return (new);
-	}
-	while (head->next)
-		head = head->next;
-	head->next = new;
-	return (new);
 }
 
 void	t_push_put(t_push *push)

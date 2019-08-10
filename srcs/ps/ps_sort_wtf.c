@@ -6,7 +6,7 @@
 /*   By: jmartel <jmartel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/27 16:05:09 by jmartel           #+#    #+#             */
-/*   Updated: 2019/08/05 20:30:41 by jmartel          ###   ########.fr       */
+/*   Updated: 2019/08/10 13:18:25 by jmartel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,16 +42,16 @@ int		ps_sort_wtf(t_push *push)
 			second = push->a->next->nb;
 			last = ps_sort_wtf_last(push->a);
 			if (first == ps_sort_wtf_max(first, second, last))
-				ps_do_op(push, &pb, 'p' + 'b' * 0xff00);
+				ps_do_op(push, E_PB);
 			else if (second == ft_max(second, last))
 			{
-				ps_do_op(push, &ra, 'r' + 'a' * 0xff00);
-				ps_do_op(push, &pb, 'p' + 'b' * 0xff00);
+				ps_do_op(push, E_RA);
+				ps_do_op(push, E_PB);
 			}
 			else
 			{
-				ps_do_op(push, &rra, 'r' + 'r' * 0xff00 + 'a' * 0xff0000);
-				ps_do_op(push, &pb, 'p' + 'b' * 0xff00);
+				ps_do_op(push, E_RRA);
+				ps_do_op(push, E_PB);
 			}
 		}
 	}

@@ -6,7 +6,7 @@
 /*   By: jmartel <jmartel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/26 16:34:20 by jmartel           #+#    #+#             */
-/*   Updated: 2019/04/27 16:05:46 by jmartel          ###   ########.fr       */
+/*   Updated: 2019/08/10 13:16:22 by jmartel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,14 +31,14 @@ static int		ps_sort_select_mintotop_a(t_push *push)
 	if (index < (push->lena / 2))
 	{
 		while (push->a->nb != min)
-			ps_do_op(push, &ra, 'r' + 'a' * 0xff00);
+			ps_do_op(push, E_RA);
 	}
 	else
 	{
 		while (push->a->nb != min)
-			ps_do_op(push, &rra, 'r' + 'r' * 0xff00 + 'a' * 0xff0000);
+			ps_do_op(push, E_RRA);
 	}
-	ps_do_op(push, &pb, 'p' + 'b' * 0xff00);
+	ps_do_op(push, E_PB);
 	return (min);
 }
 
@@ -47,6 +47,6 @@ int				ps_sort_select(t_push *push)
 	while (push->lena > 0)
 		ps_sort_select_mintotop_a(push);
 	while (push->lenb > 0)
-		ps_do_op(push, &pa, 'p' + 'a' * 0xff00);
+		ps_do_op(push, E_PA);
 	return (SUCCESS);
 }

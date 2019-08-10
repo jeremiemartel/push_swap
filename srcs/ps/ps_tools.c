@@ -6,18 +6,19 @@
 /*   By: jmartel <jmartel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/26 13:25:14 by jmartel           #+#    #+#             */
-/*   Updated: 2019/08/05 20:30:48 by jmartel          ###   ########.fr       */
+/*   Updated: 2019/08/10 13:15:19 by jmartel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int		ps_do_op(t_push *push, ops f, int nb)
+int		ps_do_op(t_push *push, t_op_id id)
 {
-	if (!(t_push_new_op_push(nb, push)))
+	t_list	*new;
+
+	if (!(new = ft_lstnew(t_op_new(id), sizeof(t_op))))
 		return (FAILURE);
-	f(&push);
-	push->lenop++;
+	ft_lstadd_last(&push->op, new);
 	return (SUCCESS);
 }
 

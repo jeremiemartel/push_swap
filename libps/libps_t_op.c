@@ -1,31 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ck_is_valid_op.c                                   :+:      :+:    :+:   */
+/*   libps_t_op.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jmartel <jmartel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/04/25 18:15:49 by jmartel           #+#    #+#             */
-/*   Updated: 2019/08/10 13:24:44 by jmartel          ###   ########.fr       */
+/*   Created: 2019/08/10 12:51:14 by jmartel           #+#    #+#             */
+/*   Updated: 2019/08/10 13:20:49 by jmartel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "checker.h"
+#include "libps.h"
 
-t_op	*ck_is_valid_op(char *line)
+t_op		*t_op_get_address(t_op_id id)
 {
-	t_op_id		index;
-	t_op		*op;
+	static t_op		op[11] = {
+		{E_PA, &pa, "pa"},
+		{E_PB, &pb, "pb"},
+		{E_SA, &sa, "sa"},
+		{E_SB, &sb, "sb"},
+		{E_SS, &ss, "ss"},
+		{E_RA, &ra, "ra"},
+		{E_RB, &rb, "rb"},
+		{E_RR, &rr, "rr"},
+		{E_RRA, &rra, "rra"},
+		{E_RRB, &rrb, "rrb"},
+		{E_RRR, &rrr, "rrr"},
+	};
 
-	index = 0;
-	if (!line || !*line)
-		return (NULL);
-	while (index < OP_ID_LEN)
-	{
-		op = t_op_get_address(index);
-		if (ft_strequ(line, op->name))
-			return (op);
-		index++;
-	}
-	return (NULL);
+	return (&op[id]);
+}
+
+t_op		*t_op_new(t_op_id id)
+{
+	return (t_op_get_address(id));
 }

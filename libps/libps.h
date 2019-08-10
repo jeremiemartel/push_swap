@@ -6,7 +6,7 @@
 /*   By: jmartel <jmartel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/12 10:07:47 by jmartel           #+#    #+#             */
-/*   Updated: 2019/04/27 14:23:14 by jmartel          ###   ########.fr       */
+/*   Updated: 2019/08/10 13:22:03 by jmartel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ typedef struct	s_push
 {
 	struct s_pile	*a;
 	struct s_pile	*b;
-	struct s_pile	*op;
+	t_list			*op;
 	int				lena;
 	int				lenb;
 	int				lenop;
@@ -34,6 +34,30 @@ typedef struct	s_push
 	int				color;
 	int				count;
 }               t_push;
+
+# define OP_ID_LEN	11
+
+typedef enum	e_op_id
+{
+	E_PA = 0,
+	E_PB,
+	E_SA,
+	E_SB,
+	E_SS,
+	E_RA,
+	E_RB,
+	E_RR,
+	E_RRA,
+	E_RRB,
+	E_RRR
+}				t_op_id;
+
+typedef	struct	s_op
+{
+	t_op_id		id;
+	void		(*op)(t_push**push);
+	char		name[4];
+}				t_op;
 
 typedef void (ops)(t_push **);
 
@@ -78,6 +102,12 @@ void			t_push_put(t_push *push);
 t_pile			*t_pile_new(int nb, t_pile *next);
 void			t_pile_free(t_pile **pile);
 void			t_pile_free_list(t_pile **pile);
+
+/*
+** libps_t_op.c
+*/
+t_op			*t_op_get_address(t_op_id id);
+t_op			*t_op_new(t_op_id id);
 
 /*
 ** libps_tools.c
